@@ -1,0 +1,11 @@
+com\eadn\entity\TimeEntry.class
+com\eadn\controller\ForgotPasswordServlet.class
+com\eadn\controller\LoginServlet.class
+com\eadn\dao\UserDAO.class
+com\mycompany\test\JakartaRestConfiguration.class
+com\eadn\controller\TimesheetServlet.class
+com\eadn\entity\User.class
+com\mycompany\test\resources\JakartaEE10Resource.class
+com\eadn\service\UserService.class
+com\eadn\dao\TimeEntryDAO.class
+com\eadn\service\TimeEntryService.class
