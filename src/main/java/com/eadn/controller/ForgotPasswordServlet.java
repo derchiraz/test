@@ -20,8 +20,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             String resetToken = UUID.randomUUID().toString();
             userDAO.updateResetToken(email, resetToken);
             
-            // Here you would normally send an email with the reset link
-            // For demonstration, we'll just show a success message
+            
             request.setAttribute("message", "Reset link has been sent to your email");
             request.getRequestDispatcher("/WEB-INF/views/forgot-password.jsp")
                   .forward(request, response);

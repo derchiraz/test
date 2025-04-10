@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     private boolean verifyPassword(String inputPassword, String storedPassword) {
-        // Implement password verification logic here
-        return inputPassword.equals(storedPassword); // Use proper password hashing in production
+        
+        return inputPassword.equals(storedPassword); 
     }
 }
