@@ -33,12 +33,6 @@
             <input type="text" placeholder="Rechercher...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="notifications">
-            <div class="notification-bell">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
-            </div>
-        </div>
         <div class="user-menu">
             <span class="user-name">${sessionScope.utilisateur.nom}</span>
             <div class="user-avatar" id="avatar-trigger">
@@ -54,11 +48,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/profil"><i class="fas fa-user"></i> Mon profil</a></li>
-                    <li><a href="${pageContext.request.contextPath}/parametres"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="${pageContext.request.contextPath}/views/coordonne.jsp"><i class="fas fa-user"></i> Mes coordonnées</a></li>
+                   
                     <li class="divider"></li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout" class="logout">
+                        <a href="${pageContext.request.contextPath}/views/login.jsp" class="login">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </a>
                     </li>
@@ -71,102 +65,83 @@
     <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-small">ET</div>
-                <span>EADN Timex</span>
-            </div>
+            
             <nav class="sidebar-nav">
                 <ul>
                     <li>
                         <a href="${pageContext.request.contextPath}/views/home.jsp" class="nav-item">
                             <i class="fas fa-home"></i>
-                            <span>Tableau de bord</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#" class="nav-item has-submenu" id="timesheet-menu">
-                            <i class="fas fa-clock"></i>
-                            <span>Feuilles de temps</span>
-                            <i class="fas fa-chevron-right submenu-icon"></i>
-                        </a>
-                        <ul class="submenu" id="timesheet-submenu">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/new">
-                                    <i class="fas fa-plus-circle"></i> Nouvelle feuille
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/active">
-                                    <i class="fas fa-edit"></i> Feuilles actives
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/history">
-                                    <i class="fas fa-history"></i> Historique
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item has-submenu" id="project-menu">
+                        <a href="#" class="nav-item has-submenu " id="project-menu">
                             <i class="fas fa-project-diagram"></i>
                             <span>Projets</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu" id="project-submenu">
+                        <ul class="submenu " id="project-submenu">
                             <li>
                                 <a href="${pageContext.request.contextPath}/views/projet.jsp">
                                     <i class="fas fa-plus-circle"></i> Ajouter projet
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/views/listeProjet.jsp">
+                                <a href="${pageContext.request.contextPath}/views/listeProjet.jsp" >
                                     <i class="fas fa-list"></i> Liste des projets
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/projet/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="nav-item has-submenu active" id="resource-menu">
-                            <i class="fas fa-users"></i>
-                            <span>Ressources</span>
+                        <a href="#" class="nav-item has-submenu " id="opportunite-menu">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Opportunités</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu show" id="resource-submenu">
+                        <ul class="submenu " id="opportunite-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/ressource/nouvelle">
-                                    <i class="fas fa-user-plus"></i> Nouvelle ressource
+                                <a href="${pageContext.request.contextPath}/views/opportunite.jsp">
+                                    <i class="fas fa-plus-circle"></i> Ajouter opportunité
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/views/listeRessource.jsp" class="active">
-                                    <i class="fas fa-list"></i> Liste des ressources
+                                <a href="${pageContext.request.contextPath}/views/listeOpportunite.jsp" >
+                                    <i class="fas fa-list"></i> Liste des opportunités
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/ressource/competences">
-                                    <i class="fas fa-brain"></i> Compétences
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/rapports" class="nav-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Rapports</span>
+                        <a href="#" class="nav-item has-submenu active" id="team-menu">
+                            <i class="fas fa-users"></i>
+                            <span>Ressource</span>
+                            <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
+                        <ul class="submenu show" id="team-submenu">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/views/ressources.jsp">
+                                    <i class="fas fa-user-plus"></i> Nouvel employé
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/views/listeRessources" class="active">
+                                    <i class="fas fa-users-cog"></i> liste des employés
+                                </a>
+                            </li>
+                           
+                        </ul>
                     </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/parametres" class="nav-item">
+                     <li>
+                        <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="nav-item">
                             <i class="fas fa-cog"></i>
-                            <span>Paramètres</span>
+                            <span>Timesheet</span>
                         </a>
                     </li>
+                    
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -185,13 +160,13 @@
                 <div class="app-header">
                     <div class="breadcrumbs">
                         <a href="${pageContext.request.contextPath}/views/home.jsp">Accueil</a> / 
-                        <a href="${pageContext.request.contextPath}/views/listeRessource.jsp">Ressources</a> / 
+                        <a href="${pageContext.request.contextPath}/views/listeRessources.jsp">Ressources</a> / 
                         <span>Liste des ressources</span>
                     </div>
                     <div class="header-top">
                         <h1>Liste des Ressources</h1>
                         <div class="header-actions">
-                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/ressource/nouvelle'">
+                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/views/ressources.jsp'">
                                 <span class="icon"><i class="fas fa-plus"></i></span> Ajouter une Ressource
                             </button>
                         </div>
@@ -207,7 +182,7 @@
                     </div>
                     <div class="filter-options">
                         <div class="filter-group">
-                            <label for="departementFilter">Département:</label>
+                            <label for="departementFilter">Service:</label>
                             <select id="departementFilter" class="filter-select">
                                 <option value="all">Tous</option>
                                 <option value="informatique">Informatique</option>
@@ -237,8 +212,8 @@
                                 <th class="sortable" data-sort="nom">Nom <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="prenom">Prénom <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="email">Email <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="departement">Département <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="fonction">Fonction <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="departement">Service <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="fonction">Titre <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="disponibilite">Disponibilité <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="tauxJournalier">Taux journalier <i class="fas fa-sort"></i></th>
                                 <th>Actions</th>
@@ -252,7 +227,7 @@
                                             <div class="empty-state">
                                                 <i class="fas fa-user-friends"></i>
                                                 <p>Aucune ressource trouvée</p>
-                                                <button class="btn-secondary" onclick="location.href='${pageContext.request.contextPath}/ressource/nouvelle'">
+                                                <button class="btn-secondary" onclick="location.href='${pageContext.request.contextPath}/views/ressources.jsp'">
                                                     Ajouter une ressource
                                                 </button>
                                             </div>

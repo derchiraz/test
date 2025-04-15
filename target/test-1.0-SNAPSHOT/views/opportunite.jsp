@@ -26,12 +26,7 @@
             <input type="text" placeholder="Rechercher...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="notifications">
-            <div class="notification-bell">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
-            </div>
-        </div>
+        
         <div class="user-menu">
             <span class="user-name">${sessionScope.utilisateur.nom}</span>
             <div class="user-avatar" id="avatar-trigger">
@@ -47,11 +42,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/profil"><i class="fas fa-user"></i> Mon profil</a></li>
-                    <li><a href="${pageContext.request.contextPath}/parametres"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="${pageContext.request.contextPath}/views/coordonne.jsp"><i class="fas fa-user"></i> Mes coordonnées</a></li>
+                   
                     <li class="divider"></li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout" class="logout">
+                        <a href="${pageContext.request.contextPath}/views/login.jsp" class="login">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </a>
                     </li>
@@ -64,119 +59,80 @@
     <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-small">ET</div>
-                <span>EADN Timex</span>
-            </div>
+            
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/dashboard" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/home.jsp" class="nav-item">
                             <i class="fas fa-home"></i>
-                            <span>Tableau de bord</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#" class="nav-item has-submenu" id="timesheet-menu">
-                            <i class="fas fa-clock"></i>
-                            <span>Feuilles de temps</span>
-                            <i class="fas fa-chevron-right submenu-icon"></i>
-                        </a>
-                        <ul class="submenu" id="timesheet-submenu">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/new">
-                                    <i class="fas fa-plus-circle"></i> Nouvelle feuille
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/active">
-                                    <i class="fas fa-edit"></i> Feuilles actives
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/history">
-                                    <i class="fas fa-history"></i> Historique
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item has-submenu" id="project-menu">
+                        <a href="#" class="nav-item has-submenu " id="project-menu">
                             <i class="fas fa-project-diagram"></i>
                             <span>Projets</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu" id="project-submenu">
+                        <ul class="submenu " id="project-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/nouveau">
+                                <a href="${pageContext.request.contextPath}/views/projet.jsp">
                                     <i class="fas fa-plus-circle"></i> Ajouter projet
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/liste">
+                                <a href="${pageContext.request.contextPath}/views/listeProjet.jsp" >
                                     <i class="fas fa-list"></i> Liste des projets
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/projet/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="nav-item has-submenu active" id="opportunity-menu">
+                        <a href="#" class="nav-item has-submenu active " id="opportunite-menu">
                             <i class="fas fa-lightbulb"></i>
                             <span>Opportunités</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu show" id="opportunity-submenu">
+                        <ul class="submenu show " id="opportunite-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/nouvelle" class="active">
+                                <a href="${pageContext.request.contextPath}/views/opportunite.jsp" class="active">
                                     <i class="fas fa-plus-circle"></i> Ajouter opportunité
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/liste">
+                                <a href="${pageContext.request.contextPath}/views/listeOpportunite.jsp" >
                                     <i class="fas fa-list"></i> Liste des opportunités
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="nav-item has-submenu" id="team-menu">
                             <i class="fas fa-users"></i>
-                            <span>Équipes</span>
+                            <span>Ressource</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
                         <ul class="submenu" id="team-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/nouvel-employe">
+                                <a href="${pageContext.request.contextPath}/views/ressources.jsp">
                                     <i class="fas fa-user-plus"></i> Nouvel employé
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/gestion">
-                                    <i class="fas fa-users-cog"></i> Gérer équipes
+                                <a href="${pageContext.request.contextPath}/views/listeRessources.jsp">
+                                    <i class="fas fa-users-cog"></i> liste des employés
                                 </a>
                             </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/rapports" class="nav-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Rapports</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/parametres" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="nav-item">
                             <i class="fas fa-cog"></i>
-                            <span>Paramètres</span>
+                            <span>Timesheet</span>
                         </a>
                     </li>
                 </ul>
@@ -196,14 +152,14 @@
             <div class="container">
                 <div class="app-header">
                     <div class="breadcrumbs">
-                        <a href="${pageContext.request.contextPath}/dashboard">Accueil</a> / 
-                        <a href="${pageContext.request.contextPath}/opportunite/liste">Opportunités</a> / 
+                        <a href="${pageContext.request.contextPath}/views/home.jsp">Accueil</a> / 
+                        <span> Opportunité</span>/ 
                         <span>Ajouter une opportunité</span>
                     </div>
                     <div class="header-top">
                         <h1>Ajouter une Opportunité</h1>
                         <div class="header-actions">
-                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/opportunite/liste'">
+                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/views/listeOpportunite.jsp'">
                                 <span class="icon"><i class="fas fa-list"></i></span> Liste des Opportunités
                             </button>
                         </div>

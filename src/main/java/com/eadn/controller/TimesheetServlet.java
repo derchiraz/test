@@ -4,7 +4,7 @@ import com.eadn.dao.TimeEntryDAO;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import com.eadn.entity.TimeEntry;
+import com.eadn.entity.TimeSheet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,7 +23,7 @@ public class TimesheetServlet extends HttpServlet {
             LocalDate.parse(weekParam) : 
             LocalDate.now().minusDays(LocalDate.now().getDayOfWeek().getValue() - 1);
 
-        List<TimeEntry> entries = timeEntryDAO.getEntriesByWeek(weekStart);
+        List<TimeSheet> entries = timeEntryDAO.getEntriesByWeek(weekStart);
         request.setAttribute("entries", entries);
         request.setAttribute("weekStart", weekStart);
         request.getRequestDispatcher("/WEB-INF/views/timesheet.jsp").forward(request, response);
@@ -37,7 +37,7 @@ public class TimesheetServlet extends HttpServlet {
         LocalDate date = LocalDate.parse(request.getParameter("date"));
         double hours = Double.parseDouble(request.getParameter("hours"));
 
-        TimeEntry entry = new TimeEntry(project, role, date, hours);
+        TimeSheet entry = new TimeSheet(project, role, date, hours);
         timeEntryDAO.saveTimeEntry(entry);
 
         response.sendRedirect(request.getContextPath() + "/timesheet");

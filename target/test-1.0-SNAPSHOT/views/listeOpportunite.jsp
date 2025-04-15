@@ -27,12 +27,7 @@
             <input type="text" placeholder="Rechercher...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="notifications">
-            <div class="notification-bell">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
-            </div>
-        </div>
+        
         <div class="user-menu">
             <span class="user-name">${sessionScope.utilisateur.nom}</span>
             <div class="user-avatar" id="avatar-trigger">
@@ -48,11 +43,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/profil"><i class="fas fa-user"></i> Mon profil</a></li>
-                    <li><a href="${pageContext.request.contextPath}/parametres"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="${pageContext.request.contextPath}/views/coordonne.jsp"><i class="fas fa-user"></i> Mes coordonnées</a></li>
+                   
                     <li class="divider"></li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout" class="logout">
+                        <a href="${pageContext.request.contextPath}/views/login.jsp" class="login">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </a>
                     </li>
@@ -65,40 +60,33 @@
     <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-small">ET</div>
-                <span>EADN Timex</span>
-            </div>
+            
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/dashboard" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/home.jsp" class="nav-item">
                             <i class="fas fa-home"></i>
-                            <span>Tableau de bord</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-item has-submenu" id="timesheet-menu">
-                            <i class="fas fa-clock"></i>
-                            <span>Feuilles de temps</span>
+                        <a href="#" class="nav-item has-submenu " id="project-menu">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Projets</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu" id="timesheet-submenu">
+                        <ul class="submenu " id="project-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/new">
-                                    <i class="fas fa-plus-circle"></i> Nouvelle feuille
+                                <a href="${pageContext.request.contextPath}/views/projet.jsp">
+                                    <i class="fas fa-plus-circle"></i> Ajouter projet
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/active">
-                                    <i class="fas fa-edit"></i> Feuilles actives
+                                <a href="${pageContext.request.contextPath}/views/listeProjet.jsp" >
+                                    <i class="fas fa-list"></i> Liste des projets
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/history">
-                                    <i class="fas fa-history"></i> Historique
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
@@ -109,51 +97,42 @@
                         </a>
                         <ul class="submenu show" id="opportunite-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/nouvelle">
+                                <a href="${pageContext.request.contextPath}/views/opportunite.jsp">
                                     <i class="fas fa-plus-circle"></i> Ajouter opportunité
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/liste" class="active">
+                                <a href="${pageContext.request.contextPath}/views/listeOpportunite.jsp" class="active">
                                     <i class="fas fa-list"></i> Liste des opportunités
                                 </a>
                             </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/opportunite/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="nav-item has-submenu" id="team-menu">
                             <i class="fas fa-users"></i>
-                            <span>Équipes</span>
+                            <span>Ressource</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
                         <ul class="submenu" id="team-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/nouvel-employe">
+                                <a href="${pageContext.request.contextPath}/views/ressources.jsp">
                                     <i class="fas fa-user-plus"></i> Nouvel employé
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/gestion">
-                                    <i class="fas fa-users-cog"></i> Gérer équipes
+                                <a href="${pageContext.request.contextPath}/views/listeRessources">
+                                    <i class="fas fa-users-cog"></i> liste des employés
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    
                     <li>
-                        <a href="${pageContext.request.contextPath}/rapports" class="nav-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Rapports</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/parametres" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="nav-item">
                             <i class="fas fa-cog"></i>
-                            <span>Paramètres</span>
+                            <span>Timesheet</span>
                         </a>
                     </li>
                 </ul>
@@ -173,14 +152,14 @@
             <div class="container">
                 <div class="app-header">
                     <div class="breadcrumbs">
-                        <a href="${pageContext.request.contextPath}/dashboard">Accueil</a> / 
-                        <a href="${pageContext.request.contextPath}/opportunite/liste">Opportunités</a> / 
+                        <a href="${pageContext.request.contextPath}/views/home.jsp">Accueil</a> / 
+                         <span>Opportunités</span> / 
                         <span>Liste des opportunités</span>
                     </div>
                     <div class="header-top">
                         <h1>Liste des Opportunités</h1>
                         <div class="header-actions">
-                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/opportunite/nouvelle'">
+                            <button class="btn-action" onclick="location.href='${pageContext.request.contextPath}/views/opportunite.jsp'">
                                 <span class="icon"><i class="fas fa-plus"></i></span> Ajouter une Opportunité
                             </button>
                         </div>
@@ -208,11 +187,11 @@
                             </select>
                         </div>
                         <div class="filter-group">
-                            <label for="responsableFilter">Commercial:</label>
+                            <label for="responsableFilter">Client:</label>
                             <select id="responsableFilter" class="filter-select">
                                 <option value="all">Tous</option>
-                                <c:forEach var="commercial" items="${commerciaux}">
-                                    <option value="${commercial.id}">${commercial.nom} ${commercial.prenom}</option>
+                                <c:forEach var="client" items="${client}">
+                                    <option value="${client.id}">${client.nom} ${client.prenom}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -226,11 +205,11 @@
                             <tr>
                                 <th class="sortable" data-sort="nom">Nom opportunité <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="client">Client <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="commercial">Commercial <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="entreprise">Entreprise <i class="fas fa-sort"></i></th>
                                 <th class="sortable" data-sort="status">Status <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="dateCreation">Date création <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="dateCloture">Date clôture <i class="fas fa-sort"></i></th>
-                                <th class="sortable" data-sort="montant">Montant <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="dateCreation">Date début  <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="dateCloture">Date fin <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="montant">Budget <i class="fas fa-sort"></i></th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -242,7 +221,7 @@
                                             <div class="empty-state">
                                                 <i class="fas fa-lightbulb"></i>
                                                 <p>Aucune opportunité trouvée</p>
-                                                <button class="btn-secondary" onclick="location.href='${pageContext.request.contextPath}/opportunite/nouvelle'">
+                                                <button class="btn-secondary" onclick="location.href='${pageContext.request.contextPath}/views/opportunite.jsp'">
                                                     Ajouter une opportunité
                                                 </button>
                                             </div>
@@ -251,12 +230,12 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach var="opportunite" items="${opportunites}">
-                                        <tr class="opportunite-row" data-id="${opportunite.id}" data-status="${opportunite.status}" data-commercial="${opportunite.commercial.id}">
+                                        <tr class="opportunite-row" data-id="${opportunite.id}" data-status="${opportunite.status}" data-client="${opportunite.client.id}">
                                             <td class="opportunite-name">
                                                 <a href="${pageContext.request.contextPath}/opportunite/details/${opportunite.id}">${opportunite.nom}</a>
                                             </td>
-                                            <td>${opportunite.client.nom}</td>
-                                            <td>${opportunite.commercial.nom} ${opportunite.commercial.prenom}</td>
+                                            
+                                            <td>${opportunite.client.nom} ${opportunite.client.prenom}</td>
                                             <td>
                                                 <span class="status-badge status-${opportunite.status}">
                                                     <c:choose>
@@ -270,14 +249,14 @@
                                                     </c:choose>
                                                 </span>
                                             </td>
-                                            <td><fmt:formatDate value="${opportunite.dateCreation}" pattern="dd/MM/yyyy" /></td>
-                                            <td><fmt:formatDate value="${opportunite.dateCloture}" pattern="dd/MM/yyyy" /></td>
-                                            <td class="montant"><fmt:formatNumber value="${opportunite.montant}" type="currency" currencySymbol="€" /></td>
+                                            <td><fmt:formatDate value="${opportunite.dateDebut}" pattern="dd/MM/yyyy" /></td>
+                                            <td><fmt:formatDate value="${opportunite.dateFin}" pattern="dd/MM/yyyy" /></td>
+                                            <td class="montant"><fmt:formatNumber value="${opportunite.Budget}" type="currency" currencySymbol="DA" /></td>
                                             <td class="actions">
-                                                <button class="action-btn view-btn" title="Voir" onclick="location.href='${pageContext.request.contextPath}/opportunite/details/${opportunite.id}'">
+                                                <button class="action-btn view-btn" title="Voir" onclick="location.href='${pageContext.request.contextPath}/views/detailsOpporunite.jsp/${opportunite.id}'">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="action-btn edit-btn" title="Modifier" onclick="location.href='${pageContext.request.contextPath}/opportunite/edit/${opportunite.id}'">
+                                                <button class="action-btn edit-btn" title="Modifier" onclick="location.href='${pageContext.request.contextPath}/views/editOpporunite.jsp/${opportunite.id}'">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <button class="action-btn delete-btn" title="Supprimer" onclick="confirmerSuppression(${opportunite.id})">
@@ -439,7 +418,7 @@
                     
                     const opportuniteName = row.querySelector('.opportunite-name').textContent.toLowerCase();
                     const opportuniteStatus = row.getAttribute('data-status');
-                    const opportuniteResponsable = row.getAttribute('data-commercial');
+                    const opportuniteResponsable = row.getAttribute('data-client');
                     
                     const matchesSearch = opportuniteName.includes(searchTerm);
                     const matchesStatus = statusValue === 'all' || opportuniteStatus === statusValue;

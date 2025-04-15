@@ -28,12 +28,7 @@
             <input type="text" placeholder="Rechercher...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="notifications">
-            <div class="notification-bell">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
-            </div>
-        </div>
+        
         <div class="user-menu">
             <span class="user-name">${sessionScope.utilisateur.nom}</span>
             <div class="user-avatar" id="avatar-trigger">
@@ -49,11 +44,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/profil"><i class="fas fa-user"></i> Mon profil</a></li>
-                    <li><a href="${pageContext.request.contextPath}/parametres"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="${pageContext.request.contextPath}/views/coordonne.jsp"><i class="fas fa-user"></i> Mes coordonnées</a></li>
+                   
                     <li class="divider"></li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout" class="logout">
+                        <a href="${pageContext.request.contextPath}/views/login.jsp" class="login">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </a>
                     </li>
@@ -66,42 +61,16 @@
     <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-small">ET</div>
-                <span>EADN Timex</span>
-            </div>
+            
             <nav class="sidebar-nav">
                 <ul>
                     <li>
                         <a href="${pageContext.request.contextPath}/views/home.jsp" class="nav-item">
                             <i class="fas fa-home"></i>
-                            <span>Tableau de bord</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-item has-submenu" id="timesheet-menu">
-                            <i class="fas fa-clock"></i>
-                            <span>Feuilles de temps</span>
-                            <i class="fas fa-chevron-right submenu-icon"></i>
-                        </a>
-                        <ul class="submenu" id="timesheet-submenu">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/new">
-                                    <i class="fas fa-plus-circle"></i> Nouvelle feuille
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/active">
-                                    <i class="fas fa-edit"></i> Feuilles actives
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/history">
-                                    <i class="fas fa-history"></i> Historique
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li>
                         <a href="#" class="nav-item has-submenu active" id="project-menu">
                             <i class="fas fa-project-diagram"></i>
@@ -119,42 +88,53 @@
                                     <i class="fas fa-list"></i> Liste des projets
                                 </a>
                             </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item has-submenu " id="opportunite-menu">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Opportunités</span>
+                            <i class="fas fa-chevron-right submenu-icon"></i>
+                        </a>
+                        <ul class="submenu " id="opportunite-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
+                                <a href="${pageContext.request.contextPath}/views/opportunite.jsp">
+                                    <i class="fas fa-plus-circle"></i> Ajouter opportunité
                                 </a>
                             </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/views/listeOpportunite.jsp" >
+                                    <i class="fas fa-list"></i> Liste des opportunités
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="nav-item has-submenu" id="team-menu">
                             <i class="fas fa-users"></i>
-                            <span>Équipes</span>
+                            <span>Ressource</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
                         <ul class="submenu" id="team-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/nouvel-employe">
+                                <a href="${pageContext.request.contextPath}/views/ressources.jsp">
                                     <i class="fas fa-user-plus"></i> Nouvel employé
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/gestion">
-                                    <i class="fas fa-users-cog"></i> Gérer équipes
+                                <a href="${pageContext.request.contextPath}/views/listeRessources.jsp">
+                                    <i class="fas fa-users-cog"></i> liste des employés
                                 </a>
                             </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/rapports" class="nav-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Rapports</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/parametres" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="nav-item">
                             <i class="fas fa-cog"></i>
-                            <span>Paramètres</span>
+                            <span>Timesheet</span>
                         </a>
                     </li>
                 </ul>
@@ -175,7 +155,7 @@
                 <div class="app-header">
                     <div class="breadcrumbs">
                         <a href="${pageContext.request.contextPath}/views/home.jsp">Accueil</a> / 
-                        <a href="${pageContext.request.contextPath}/views/listeProjet.jsp">Projets</a> / 
+                         <span> Projets</span>/ 
                         <span>Liste des projets</span>
                     </div>
                     <div class="header-top">
@@ -267,11 +247,14 @@
                                             </td>
                                             <td><fmt:formatDate value="${projet.dateDebut}" pattern="dd/MM/yyyy" /></td>
                                             <td><fmt:formatDate value="${projet.dateFin}" pattern="dd/MM/yyyy" /></td>
-                                            <td class="budget"><fmt:formatNumber value="${projet.budget}" type="currency" currencySymbol="€" /></td>
+                                            <td class="budget"><fmt:formatNumber value="${projet.budget}" type="currency" currencySymbol="DA" /></td>
                                             <td class="actions">
-                                                <button class="action-btn view-btn" title="Voir" onclick="location.href='${pageContext.request.contextPath}/projet/details/${projet.id}'">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
+                                                            <c:if test="${sessionScope.user.role == 'RESPONSABLE' && projet.status != 'VALIDATED'}">
+                                                                <button class="action-btn validate-btn" title="Valider" onclick="validateProject(${projet.id})">
+                                                                     <i class="fas fa-check"></i>
+                                                                </button>
+                                                            </c:if>
+         
                                                 <button class="action-btn edit-btn" title="Modifier" onclick="location.href='${pageContext.request.contextPath}/projet/edit/${projet.id}'">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
@@ -705,6 +688,23 @@ if (column === 'nom' || column === 'nomCourt') {
             currentPage = 1;
             setupPagination();
         }
+        function validateProject(projectId) {
+    if (confirm('Êtes-vous sûr de vouloir valider ce projet ?')) {
+        fetch(`${pageContext.request.contextPath}/projet/validate/${projectId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert('Erreur lors de la validation du projet');
+            }
+        });
+    }
+}
 
         // Ouvrir le modal de confirmation de suppression
         function confirmerSuppression(id) {

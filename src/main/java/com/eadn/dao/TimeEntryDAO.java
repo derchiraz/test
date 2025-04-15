@@ -1,8 +1,7 @@
-
 package com.eadn.dao;
 
 
-import com.eadn.entity.TimeEntry;
+import com.eadn.entity.TimeSheet;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -19,17 +18,17 @@ public class TimeEntryDAO {
         em = emf.createEntityManager();
     }
     
-    public List<TimeEntry> getEntriesByWeek(LocalDate weekStart) {
+    public List<TimeSheet> getEntriesByWeek(LocalDate weekStart) {
         LocalDate weekEnd = weekStart.plusDays(6);
         return em.createQuery(
             "SELECT t FROM TimeEntry t WHERE t.date BETWEEN :startDate AND :endDate ORDER BY t.date", 
-            TimeEntry.class)
+            TimeSheet.class)
             .setParameter("startDate", weekStart)
             .setParameter("endDate", weekEnd)
             .getResultList();
     }
     
-    public void saveTimeEntry(TimeEntry entry) {
+    public void saveTimeEntry(TimeSheet entry) {
         try {
             em.getTransaction().begin();
             if (entry.getId() == null) {
@@ -49,7 +48,7 @@ public class TimeEntryDAO {
     public void deleteTimeEntry(Long id) {
         try {
             em.getTransaction().begin();
-            TimeEntry entry = em.find(TimeEntry.class, id);
+            TimeSheet entry = em.find(TimeSheet.class, id);
             if (entry != null) {
                 em.remove(entry);
             }
@@ -62,14 +61,14 @@ public class TimeEntryDAO {
         }
     }
     
-    public TimeEntry findById(Long id) {
-        return em.find(TimeEntry.class, id);
+    public TimeSheet findById(Long id) {
+        return em.find(TimeSheet.class, id);
     }
     
-    public List<TimeEntry> findByProject(String project) {
+    public List<TimeSheet> findByProject(String project) {
         return em.createQuery(
             "SELECT t FROM TimeEntry t WHERE t.project = :project", 
-            TimeEntry.class)
+            TimeSheet.class)
             .setParameter("project", project)
             .getResultList();
     }
@@ -86,7 +85,7 @@ public class TimeEntryDAO {
     public void updateStatus(Long id, String status) {
         try {
             em.getTransaction().begin();
-            TimeEntry entry = em.find(TimeEntry.class, id);
+            TimeSheet entry = em.find(TimeSheet.class, id);
             if (entry != null) {
                 entry.setStatus(status);
             }

@@ -1,10 +1,6 @@
 package com.eadn.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,17 +11,28 @@ public class Projet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nom;
     private String nomCourt;
     private double budget;
     private String status;
+
+    @Column(length = 2000)
     private String description;
+
+    // 🔁 Ces deux champs sont maintenant des String (pas @ManyToOne)
     private String responsable;
     private String compte;
+
+    @Temporal(TemporalType.DATE)
     private Date dateDebut;
+
+    @Temporal(TemporalType.DATE)
     private Date dateFin;
 
-    // Getters et Setters
+    public Projet() {}
+
+    // Getters / Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

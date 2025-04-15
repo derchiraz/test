@@ -26,12 +26,8 @@
             <input type="text" placeholder="Rechercher...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="notifications">
-            <div class="notification-bell">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
-            </div>
-        </div>
+        
+        
         <div class="user-menu">
             <span class="user-name">${sessionScope.utilisateur.nom}</span>
             <div class="user-avatar" id="avatar-trigger">
@@ -47,11 +43,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath}/profil" class="active"><i class="fas fa-user"></i> Mon profil</a></li>
-                    <li><a href="${pageContext.request.contextPath}/parametres"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="${pageContext.request.contextPath}/views/coordonne.jsp"><i class="fas fa-user"></i> Mes coordonnées</a></li>
+                   
                     <li class="divider"></li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout" class="logout">
+                        <a href="${pageContext.request.contextPath}/views/login.jsp" class="login">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </a>
                     </li>
@@ -64,95 +60,80 @@
     <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-small">ET</div>
-                <span>EADN Timex</span>
-            </div>
+            
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/dashboard" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/home.jsp" class="nav-item">
                             <i class="fas fa-home"></i>
-                            <span>Tableau de bord</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="#" class="nav-item has-submenu" id="timesheet-menu">
-                            <i class="fas fa-clock"></i>
-                            <span>Feuilles de temps</span>
-                            <i class="fas fa-chevron-right submenu-icon"></i>
-                        </a>
-                        <ul class="submenu" id="timesheet-submenu">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/new">
-                                    <i class="fas fa-plus-circle"></i> Nouvelle feuille
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/active">
-                                    <i class="fas fa-edit"></i> Feuilles actives
-                                </a>
-                            </li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/timesheet/history">
-                                    <i class="fas fa-history"></i> Historique
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item has-submenu" id="project-menu">
+                        <a href="#" class="nav-item has-submenu " id="project-menu">
                             <i class="fas fa-project-diagram"></i>
                             <span>Projets</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
-                        <ul class="submenu" id="project-submenu">
+                        <ul class="submenu " id="project-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/nouveau">
+                                <a href="${pageContext.request.contextPath}/views/projet.jsp">
                                     <i class="fas fa-plus-circle"></i> Ajouter projet
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/liste">
+                                <a href="${pageContext.request.contextPath}/views/listeProjet.jsp" >
                                     <i class="fas fa-list"></i> Liste des projets
                                 </a>
                             </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-item has-submenu  " id="opportunite-menu">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Opportunités</span>
+                            <i class="fas fa-chevron-right submenu-icon"></i>
+                        </a>
+                        <ul class="submenu  " id="opportunite-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/projet/rapports">
-                                    <i class="fas fa-chart-line"></i> Rapports
+                                <a href="${pageContext.request.contextPath}/views/opportunite.jsp" >
+                                    <i class="fas fa-plus-circle"></i> Ajouter opportunité
                                 </a>
                             </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/views/listeOpportunite.jsp" >
+                                    <i class="fas fa-list"></i> Liste des opportunités
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="nav-item has-submenu" id="team-menu">
                             <i class="fas fa-users"></i>
-                            <span>Équipes</span>
+                            <span>Ressource</span>
                             <i class="fas fa-chevron-right submenu-icon"></i>
                         </a>
                         <ul class="submenu" id="team-submenu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/nouvel-employe">
+                                <a href="${pageContext.request.contextPath}/views/ressources.jsp">
                                     <i class="fas fa-user-plus"></i> Nouvel employé
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/equipe/gestion">
-                                    <i class="fas fa-users-cog"></i> Gérer équipes
+                                <a href="${pageContext.request.contextPath}/views/listeRessources.jsp">
+                                    <i class="fas fa-users-cog"></i> liste des employés
                                 </a>
                             </li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/rapports" class="nav-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Rapports</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/parametres" class="nav-item">
+                        <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="nav-item">
                             <i class="fas fa-cog"></i>
-                            <span>Paramètres</span>
+                            <span>Timesheet</span>
                         </a>
                     </li>
                 </ul>
@@ -173,7 +154,7 @@
                 <div class="app-header">
                     <div class="breadcrumbs">
                         <a href="${pageContext.request.contextPath}/dashboard">Accueil</a> / 
-                        <a href="${pageContext.request.contextPath}/profil">Profil</a> / 
+                        <span>Profil</span>/ 
                         <span>Mes coordonnées</span>
                     </div>
                     <div class="header-top">
@@ -213,6 +194,15 @@
                                     <input type="text" id="statut" name="statut" class="form-control" 
                                           value="Activated - 13/05/2019" disabled>
                                 </div>
+                                 <div class="input-group">
+                            <label for="disponibiliteFilter">Disponibilité</label>
+                            <select id="disponibiliteFilter" class="form-control">
+                                <option value="all">Tous</option>
+                                <option value="disponible">Disponible</option>
+                                <option value="partiel">Partiellement disponible</option>
+                                <option value="indisponible">Indisponible</option>
+                            </select>
+                        </div>
                             </div>
                             
                             <div class="form-section">
@@ -248,21 +238,10 @@
                                         <h3 id="profile-name">Derghal Chiraz</h3>
                                         <p id="profile-title">DEC</p>
                                     </div>
+                                    
                                 </div>
-                                <div class="profile-stats">
-                                    <div class="stat-item">
-                                        <span class="stat-label">Projets</span>
-                                        <span class="stat-value">12</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-label">Heures</span>
-                                        <span class="stat-value">128</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-label">Tâches</span>
-                                        <span class="stat-value">47</span>
-                                    </div>
-                                </div>
+                                
+                               
                                 <div class="profile-actions">
                                     <a href="#" class="profile-action" onclick="openEmail()">
                                         <i class="fas fa-envelope"></i> Email
@@ -272,7 +251,7 @@
                                     </a>
                                 </div>
                                 <div class="profile-links">
-                                    <a href="${pageContext.request.contextPath}/timesheet/user" class="profile-link">
+                                    <a href="${pageContext.request.contextPath}/views/timesheet.jsp" class="profile-link">
                                         <i class="fas fa-clock"></i> Mes feuilles de temps
                                     </a>
                                     <a href="${pageContext.request.contextPath}/cv" class="profile-link">
@@ -358,31 +337,6 @@
         .profile-info p {
             margin: 0;
             color: #666;
-        }
-        
-        .profile-stats {
-            display: flex;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .stat-item {
-            flex: 1;
-            text-align: center;
-            padding: 15px 0;
-        }
-        
-        .stat-label {
-            display: block;
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .stat-value {
-            display: block;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-top: 5px;
         }
         
         .profile-actions {
